@@ -1,0 +1,18 @@
+from huggingface_hub import InferenceClient
+
+import os
+from models.model import ModelInterface
+
+class HuggingFaceModel(ModelInterface):
+    def __init__(self, model="EleutherAI/gpt-neo-1.3B"):
+        self.model = model
+        self.token = os.getenv("OPENAI_API_KEY")
+        self.client = None
+
+    def load_model(self):
+        self.client = InferenceClient(model=self.model, token=self.token)
+
+    def get_completion(self, context):
+        context = "\n".join([f"{msg['role']}: {msg['content']}" for msg in context])
+        response = self.client.text_generation(prompt=context, max_new_tokens=150)
+        return response

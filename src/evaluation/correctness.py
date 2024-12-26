@@ -1,11 +1,12 @@
 from evaluation.prompts import default_user_prompt, benchmark_evaluation_system_prompt
 from evaluation.utils import evaluation_parser
-from evaluation.model import get_completion
+from models.model import ModelInterface
+from models.register_models import ModelFactory
 
 
 class CorrectnessEvaluator:
-    def __init__(self, model):
-        self.model = model
+    def __init__(self, params={}):
+        self.params = params
         self.correctness_prompt = benchmark_evaluation_system_prompt()
 
     def evaluate_response(self, input, reference, prediction, tests):
@@ -24,8 +25,23 @@ class CorrectnessEvaluator:
             }
         ]
         
-        eval_response = get_completion(messages, self.model)
-        evaluation = evaluation_parser(eval_response)
+        for model_name in self.params['models']:
+            try:
+                # Criar a instância do modelo usando a fábrica
+                model_instance = ModelFactory.get_model(model_name)
+                
+                # Carregar o modelo (se necessário)
+                model_instance.load_model()
+                
+                # Executar o método get_completion
+                eval_response = model_instance.get_completion(messages)
+                print(eval_response)
+                # Processar a resposta
+                evaluation = evaluation_parser(eval_response)
+                
+            except Exception as e:
+                print(f"Error processing model '{model_name}': {e}")
+
 
         return {
             'prompt': input,
