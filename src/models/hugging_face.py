@@ -4,9 +4,9 @@ import os
 from models.model import ModelInterface
 
 class HuggingFaceModel(ModelInterface):
-    def __init__(self, model="EleutherAI/gpt-neo-1.3B"):
+    def __init__(self, model=None):
         self.model = model
-        self.token = os.getenv("OPENAI_API_KEY")
+        self.token = os.getenv("HUGGING_FACE_KEY")
         self.client = None
 
     def load_model(self):

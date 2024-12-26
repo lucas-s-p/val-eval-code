@@ -1,5 +1,5 @@
-from models.gpt import OpenAIModel
-from models.neo_gpt import HuggingFaceModel
+from models.openai import OpenAIModel
+from models.hugging_face import HuggingFaceModel
 
 
 class ModelFactory:
@@ -18,4 +18,4 @@ class ModelFactory:
 
 # Registre os modelos
 ModelFactory.register_model("openai", OpenAIModel)
-ModelFactory.register_model("neo_gpt", HuggingFaceModel)
+ModelFactory.register_model("huggingface", HuggingFaceModel)

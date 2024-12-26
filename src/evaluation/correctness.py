@@ -25,22 +25,29 @@ class CorrectnessEvaluator:
             }
         ]
         
-        for model_name in self.params['models']:
+        for model_spec in self.params['models']:
             try:
-                # Criar a instância do modelo usando a fábrica
-                model_instance = ModelFactory.get_model(model_name)
+                # Divida o formato api:model_path
+                api, model_path = model_spec.split(":", 1)
+                print(api, model_path)
                 
-                # Carregar o modelo (se necessário)
+                # Crie a instância do modelo
+                model_instance = ModelFactory.get_model(api, model=model_path)
+                
+                # Carregue o modelo
                 model_instance.load_model()
                 
-                # Executar o método get_completion
+                # Execute a avaliação
                 eval_response = model_instance.get_completion(messages)
-                print(eval_response)
+                
                 # Processar a resposta
                 evaluation = evaluation_parser(eval_response)
                 
+                # Exibir ou armazenar o resultado
+                print(f"Model: {api} ({model_path})\nEvaluation: {evaluation}\n")
             except Exception as e:
-                print(f"Error processing model '{model_name}': {e}")
+                print(f"Error processing model '{model_spec}': {e}")
+
 
 
         return {
