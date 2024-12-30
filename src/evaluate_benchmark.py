@@ -1,8 +1,7 @@
 import pandas as pd
+import argparse
 from evaluation.processor import CorrectnessEvaluator
 from dataset.dataset import DatasetLoader
-import os
-import argparse
 from dotenv import load_dotenv
 
 
@@ -68,11 +67,8 @@ def main():
     params = parse_parameters()
     evaluator = CorrectnessEvaluator(params=params)
 
-    #data = pd.read_parquet("hf://datasets/openai/openai_humaneval/openai_humaneval/test-00000-of-00001.parquet")
     dataset = DatasetLoader(params=params)
     data = dataset.load()
-    data['prediction'] = data['canonical_solution']
-    data = data.astype(str)
 
     result = []
     data.apply(lambda row: result.append(evaluator.evaluate_response(row[params['prompt_col']], row[params['reference_col']], row['prediction'], row[params['test_suite_col']])), axis='columns')
