@@ -8,5 +8,5 @@ class ModelInterface(ABC):
 
     @abstractmethod
     def get_completion(self, input_data):
-        """Executa a entrada no modelo."""
+        """Executa a entrada para o modelo."""
         pass

@@ -14,5 +14,6 @@ class HuggingFaceModel(ModelInterface):
 
     def get_completion(self, context):
         context = "\n".join([f"{msg['role']}: {msg['content']}" for msg in context])
-        response = self.client.text_generation(prompt=context, max_new_tokens=150)
+        response = self.client.text_generation(prompt=context, max_new_tokens=1500)
+        print("oiiiii", response)
         return response
