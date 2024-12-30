@@ -1,5 +1,5 @@
 import pandas as pd
-from evaluation.correctness import CorrectnessEvaluator
+from evaluation.processor import CorrectnessEvaluator
 import os
 import argparse
 from dotenv import load_dotenv
@@ -23,7 +23,6 @@ def parse_parameters() -> dict:
     parser = parser.parse_args()
     params = {
         "models": parser.models,
-        "public_key": os.getenv("LANGFUSE_PUBLIC_KEY", None),
     }
     return params
 

@@ -29,7 +29,6 @@ class CorrectnessEvaluator:
             try:
                 # Divida o formato api:model_path
                 api, model_path = model_spec.split(":", 1)
-                print(api, model_path)
                 
                 # Crie a instância do modelo
                 model_instance = ModelFactory.get_model(api, model=model_path)
@@ -42,9 +41,6 @@ class CorrectnessEvaluator:
                 
                 # Processar a resposta
                 evaluation = evaluation_parser(eval_response)
-                
-                # Exibir ou armazenar o resultado
-                print(f"Model: {api} ({model_path})\nEvaluation: {evaluation}\n")
             except Exception as e:
                 print(f"Error processing model '{model_spec}': {e}")
 
