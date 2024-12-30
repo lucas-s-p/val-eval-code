@@ -15,3 +15,4 @@ class DatasetLoader:
             return pd.read_csv(self.params['dataset'])
         else:
             raise ValueError("Formato de arquivo não suportado. Use um arquivo Parquet ou CSV.")
+        
