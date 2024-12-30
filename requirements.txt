@@ -1,0 +1,5 @@
+pandas
+openai
+python-dotenv
+huggingface_hub
+pyarrow
