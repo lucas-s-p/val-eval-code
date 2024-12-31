@@ -1,5 +1,6 @@
 from models.openai import OpenAIModel
 from models.hugging_face import HuggingFaceModel
+from models.maritaca import MaritacaModel
 
 
 class ModelFactory:
@@ -19,3 +20,4 @@ class ModelFactory:
 # Registre os modelos
 ModelFactory.register_model("openai", OpenAIModel)
 ModelFactory.register_model("huggingface", HuggingFaceModel)
+ModelFactory.register_model("maritaca", MaritacaModel)

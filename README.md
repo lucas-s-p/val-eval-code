@@ -39,4 +39,11 @@ python3 evaluate_benchmark.py \
     --prompt_col "prompt" \
     --reference_col "canonical_solution" \
     --test_suite_col "test"
+
+python3 evaluate_benchmark.py \
+    -m maritaca:"sabia-2-small" \
+    --dataset "hf://datasets/openai/openai_humaneval/openai_humaneval/test-00000-of-00001.parquet" \
+    --prompt_col "prompt" \
+    --reference_col "canonical_solution" \
+    --test_suite_col "test"
 ```

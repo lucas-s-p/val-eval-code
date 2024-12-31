@@ -35,18 +35,11 @@ def benchmark_evaluation_system_prompt() -> str:
         - INCORRETO: A predição falha em pelo menos um dos testes criados.
 
         Exemplos de respostas:
-        {
-            "evaluation": "CORRETO"
-        }
-
-        {
-            "evaluation": "INCORRETO"
-        }
+        Exemplo 1: "CORRETO"
+        Exemplo 2: "INCORRETO"
         
         Lembre-se:
-        - Não inclua explicações ou textos adicionais.
-        - Foque exclusivamente na criação de testes e na avaliação da predição.
-
+        - Não inclua explicações, frases, caracteres, testes ou textos adicionais. Retorne como resposta apenas "CORRETO" ou "INCORRETO"
 
     """
 

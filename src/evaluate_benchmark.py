@@ -73,6 +73,6 @@ def main():
     result = []
     data.apply(lambda row: result.append(evaluator.evaluate_response(row[params['prompt_col']], row[params['reference_col']], row['prediction'], row[params['test_suite_col']])), axis='columns')
 
-    result = pd.DataFrame(result).to_csv("resultado_evaluation.csv", index=False)
+    result = pd.DataFrame(result).to_csv("result_evaluation.csv", index=False)
 
 main()

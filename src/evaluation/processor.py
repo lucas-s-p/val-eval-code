@@ -29,10 +29,8 @@ class CorrectnessEvaluator:
             try:
                 # Divida o formato api:model_path
                 api, model_path = model_spec.split(":", 1)
-                
                 # Crie a instância do modelo
                 model_instance = ModelFactory.get_model(api, model=model_path)
-                
                 # Carregue o modelo
                 model_instance.load_model()
                 
