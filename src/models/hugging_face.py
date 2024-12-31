@@ -16,5 +16,4 @@ class HuggingFaceModel(ModelInterface):
         context = "\n".join([f"{msg['role']}: {msg['content']}" for msg in context])
         print(context)
         response = self.client.text_generation(prompt=context, max_new_tokens=1500)
-        print(response)
         return response
