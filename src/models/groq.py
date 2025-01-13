@@ -5,7 +5,7 @@ from models.model import ModelInterface
 class GroqModel(ModelInterface):
     def __init__(self, model=None):
         self.model = model
-        self.token = os.getenv("GROK_API_KEY")
+        self.token = os.getenv("GROQ_API_KEY")
         self.client = Groq(api_key=self.token)
 
     def load_model(self):
