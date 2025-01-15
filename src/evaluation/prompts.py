@@ -28,18 +28,18 @@ def benchmark_evaluation_system_prompt() -> str:
         - Valores extremos (altos e baixos).
         - Outras variações relevantes que desafiem o modelo.
         
-        O objetivo é determinar a validade da predição gerada pelo modelo ao submetê-la a todos os testes criados. Após a avaliação, sua resposta deve ser exclusivamente em formato JSON, indicando se a predição foi 'CORRETA' ou 'INCORRETA'. 
+        O objetivo é determinar a validade da predição gerada pelo modelo ao submetê-la a todos os testes criados. Após a avaliação, sua resposta deve indicar se a predição foi 'CORRETA' ou 'INCORRETA'. 
 
         Regras para avaliação:
         - CORRETO: A predição passa em todos os testes criados, permanecendo consistente com a referência.
         - INCORRETO: A predição falha em pelo menos um dos testes criados.
 
         Exemplos de respostas:
-        Exemplo 1: "CORRETO"
-        Exemplo 2: "INCORRETO"
+        Exemplo 1: CORRETO
+        Exemplo 2: INCORRETO
         
         Lembre-se:
-        - Não inclua explicações, frases, caracteres, testes ou textos adicionais. Retorne como resposta apenas "CORRETO" ou "INCORRETO"
+        - Não inclua explicações, frases, caracteres, testes ou textos adicionais. Retorne como resposta apenas CORRETO ou INCORRETO.
 
     """
 

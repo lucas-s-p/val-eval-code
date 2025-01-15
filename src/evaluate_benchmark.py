@@ -3,6 +3,7 @@ import argparse
 from evaluation.processor import CorrectnessEvaluator
 from dataset.dataset import DatasetLoader
 from dotenv import load_dotenv
+from evaluation.performance_calculator import PerformanceCalculator
 
 
 def parse_parameters() -> dict:
@@ -64,15 +65,21 @@ def parse_parameters() -> dict:
 
 
 def main():
-    params = parse_parameters()
-    evaluator = CorrectnessEvaluator(params=params)
+    try:
+        params = parse_parameters()
+        evaluator = CorrectnessEvaluator(params=params)
 
-    dataset = DatasetLoader(params=params)
-    data = dataset.load()
+        dataset = DatasetLoader(params=params)
+        data = dataset.load()
+        
+        result = []
+        data.apply(lambda row: result.append(evaluator.evaluate_response(row[params['prompt_col']], row[params['reference_col']], row['prediction'], row[params['test_suite_col']])), axis='columns')
 
-    result = []
-    data.apply(lambda row: result.append(evaluator.evaluate_response(row[params['prompt_col']], row[params['reference_col']], row['prediction'], row[params['test_suite_col']])), axis='columns')
-
-    result = pd.DataFrame(result).to_csv("result_evaluation.csv", index=False)
+        result = pd.DataFrame(result)
+        result.to_csv("result_evaluation.csv", index=False)
+        efficiency = PerformanceCalculator.calculate(result['evaluation'])
+        print("O(s) modelo(s) conseguiram encontrar uma eficiência de: ", efficiency, "%")
+    except Exception as e:
+        print(f"Erro ao executar o script: {e}")
 
 main()
