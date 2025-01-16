@@ -52,6 +52,13 @@ def parse_parameters() -> dict:
         help="",
         default=None,
     )
+    parser.add_argument(
+        "-l",
+        "--lang_prompt",
+        type=str,
+        help="",
+        default='pt'
+    )
 
     parser = parser.parse_args()
     params = {
@@ -60,6 +67,7 @@ def parse_parameters() -> dict:
         "prompt_col": parser.prompt_col,
         "reference_col": parser.reference_col,
         "test_suite_col": parser.test_suite_col,
+        "lang_prompt": parser.lang_prompt
     }
     return params
 

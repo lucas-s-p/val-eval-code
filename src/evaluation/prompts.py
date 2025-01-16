@@ -1,9 +1,11 @@
+from googletrans import Translator
+
 def default_user_prompt(input: object, reference: object, prediction: object, tests: object) -> str:
 	return f"""
-		## Input do benchmark
+		## Input
 		{input}
 
-		## Referencia
+		## Reference
 		{reference}
 
 		## Prediction
@@ -14,8 +16,8 @@ def default_user_prompt(input: object, reference: object, prediction: object, te
 		"""
 
 
-def benchmark_evaluation_system_prompt() -> str:
-    return """
+async def benchmark_evaluation_system_prompt(language: str) -> str:
+    prompt = """
         Você é um especialista em avaliação de benchmarks e testes de modelos de machine learning. Você receberá as seguintes informações:
         - Uma tabela em formato CSV contendo:
             - 'input': Entrada utilizada no modelo.
@@ -42,4 +44,13 @@ def benchmark_evaluation_system_prompt() -> str:
         - Não inclua explicações, frases, caracteres, testes ou textos adicionais. Retorne como resposta apenas CORRETO ou INCORRETO.
 
     """
+    translate = Translator()
+    try:
+        translated = await translate.translate(prompt, src='pt', dest=language)
+        text = translated.text
+        print(text)
+        return text
+    except Exception as e:
+        print(f"Error trying to translate: {e}")
+        return "Error translating text."
 

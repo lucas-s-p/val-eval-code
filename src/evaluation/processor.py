@@ -1,17 +1,22 @@
 from evaluation.prompts import default_user_prompt, benchmark_evaluation_system_prompt
 from models.model import ModelInterface
 from models.register_models import ModelFactory
+import asyncio
 
 class CorrectnessEvaluator:
     def __init__(self, params={}):
         self.params = params
-        self.correctness_prompt = benchmark_evaluation_system_prompt()
+        self.correctness_prompt = None
 
-    def evaluate_response(self, input, reference, prediction, tests):
-        
+    def init_sync(self):
+        loop = asyncio.get_event_loop()
+        self.correctness_prompt = loop.run_until_complete(benchmark_evaluation_system_prompt(self.params['lang_prompt']))
+
+    def evaluate_response(self, input, reference, prediction, tests):  
         if input is None or reference is None:
             raise ValueError("message and response must be provided")
         
+        self.init_sync()
         messages = [
             {
                 'role': "system",
