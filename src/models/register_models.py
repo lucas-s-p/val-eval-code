@@ -18,7 +18,7 @@ class ModelFactory:
             raise ValueError(f"Model '{name}' is not registered.")
         return model_class(**kwargs)
 
-# Registre os modelos
+# Register the models:
 ModelFactory.register_model("openai", OpenAIModel)
 ModelFactory.register_model("huggingface", HuggingFaceModel)
 ModelFactory.register_model("maritaca", MaritacaModel)

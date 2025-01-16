@@ -3,10 +3,10 @@ from abc import ABC, abstractmethod
 class ModelInterface(ABC):
     @abstractmethod
     def load_model(self):
-        """Carrega o modelo."""
+        """Load the model."""
         pass
 
     @abstractmethod
     def get_completion(self, input_data):
-        """Executa a entrada para o modelo."""
+        """Executes the input to the model."""
         pass

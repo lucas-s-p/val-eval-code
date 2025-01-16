@@ -35,8 +35,6 @@ class CorrectnessEvaluator:
             except Exception as e:
                 print(f"Error processing model '{model_spec}': {e}")
         
-        print(list_response)
-
         return {
             'prompt': input,
             'reference': reference,

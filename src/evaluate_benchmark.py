@@ -17,7 +17,7 @@ def parse_parameters() -> dict:
         "--models",
         type=str,
         nargs="+",
-        help="Path to the models that will be used in the evaluation.",
+        help="",
         default=None,
     )
 
@@ -78,8 +78,8 @@ def main():
         result = pd.DataFrame(result)
         result.to_csv("result_evaluation.csv", index=False)
         efficiency = PerformanceCalculator.calculate(result['evaluation'])
-        print("O(s) modelo(s) conseguiram encontrar uma eficiência de: ", efficiency, "%")
+        print("The accuracy obtained is:", efficiency, "%")
     except Exception as e:
-        print(f"Erro ao executar o script: {e}")
+        print(f"Error while running the script: {e}")
 
 main()

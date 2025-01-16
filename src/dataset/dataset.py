@@ -2,12 +2,10 @@ import argparse
 import pandas as pd
 
 class DatasetLoader:
-    """Classe para carregar o dataset."""
     def __init__(self, params={}):
         self.params = params
 
     def load(self):
-        """Carrega o dataset com base no tipo de arquivo."""
         file_path = self.params['dataset']
         if file_path.endswith(".parquet"):
             data = pd.read_parquet(self.params['dataset'])
@@ -22,5 +20,5 @@ class DatasetLoader:
             data = data.astype(str)
             return data
         else:
-            raise ValueError("Formato de arquivo não suportado. Use um arquivo Parquet ou CSV.")
+            raise ValueError("Unsupported file format. Use a Parquet or CSV file instead.")
         
