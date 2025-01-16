@@ -48,7 +48,6 @@ async def benchmark_evaluation_system_prompt(language: str) -> str:
     try:
         translated = await translate.translate(prompt, src='pt', dest=language)
         text = translated.text
-        print(text)
         return text
     except Exception as e:
         print(f"Error trying to translate: {e}")

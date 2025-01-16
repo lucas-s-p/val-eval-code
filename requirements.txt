@@ -7,3 +7,4 @@ maritaca-python
 maritalk
 groq
 googletrans
+tqdm
