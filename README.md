@@ -1,36 +1,40 @@
-# VAL-EVAL-CODE
+# VAL-EVAL-CODE (Code Evaluation Validator)
 
-## Gerenciamento de dependências
+## Dependency Management
 
-Para a instalação das dependências, execute o seguinte comando:
+To install the dependencies, run the following command:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Variáveis de ambiente
+## Environment Variables
 
-Faça uma cópia do arquivo `.env.example`, renomeie-o como `.env` e preencha-o com os valores das variáveis de ambiente.
+Make a copy of the `.env.example` file, rename it to `.env`, and fill it with the appropriate environment variable values.
 
-## Parâmetros de execução
+## Dataset with Predictions
 
-No terminal, você pode utilizar parâmetros para personalizar a validção dos resultados. Os parâmetros disponíveis são:
+Make a copy of the `prediction.csv.example` file, rename it to `prediction.csv`, and add the benchmark predictions to the file.
+
+## Execution Parameters
+
+In the terminal, you can use parameters to customize the validation of results. The available parameters are:
 
 - **`-m`**  
-  Especifica o modelo a ser utilizado na validação. Deve ser informado no formato aceito pela ferramenta (e.g., `huggingface:meta-llama/Llama-2-7b-hf`).  
+  Specifies the model to be used in the validation. It must be provided in a format accepted by the tool (e.g., `huggingface:meta-llama/Llama-2-7b-hf`).  
 
 - **`-d`**  
-  Define o caminho para o dataset a ser utilizado na validação. O arquivo pode estar nos formatos `.parquet` ou `.csv`.  
+  Defines the path to the dataset to be used in the validation. The file can be in `.parquet` or `.csv` formats.  
 
 - **`-p`**  
-  Indica o nome da coluna no dataset que contém os valores de entrada (`input`) das instâncias.  
+  Indicates the name of the column in the dataset that contains the input values (`input`) of the instances.  
 
 - **`-r`**  
-  Define o nome da coluna no dataset que contém as respostas de referência (`reference`) esperadas para as instâncias.  
+  Defines the name of the column in the dataset that contains the expected reference responses (`reference`) for the instances.  
 
 - **`-t`**  
-  Especifica o nome da coluna no dataset que contém os resultados dos testes (`tests`) já aplicados às instâncias.  
+  Specifies the name of the column in the dataset that contains the test results (`tests`) already applied to the instances.  
 
-Abaixo, apresento exemplos de execução dos extratores com auxilílio dos parâmetros de execução:
+Below are examples of running the extractors with the help of the execution parameters:
 
 ```bash
 python3 evaluate_benchmark.py \
@@ -53,4 +57,3 @@ python3 evaluate_benchmark.py \
     --prompt_col "prompt" \
     --reference_col "canonical_solution" \
     --test_suite_col "test"
-```
