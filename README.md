@@ -30,7 +30,7 @@ No terminal, você pode utilizar parâmetros para personalizar a validção dos 
 - **`-t`**  
   Especifica o nome da coluna no dataset que contém os resultados dos testes (`tests`) já aplicados às instâncias.  
 
-Abaixo, apresentamos exemplos de execução dos extratores com auxilílio dos parâmetros de execução:
+Abaixo, apresento exemplos de execução dos extratores com auxilílio dos parâmetros de execução:
 
 ```bash
 python3 evaluate_benchmark.py \
