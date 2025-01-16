@@ -34,6 +34,9 @@ In the terminal, you can use parameters to customize the validation of results. 
 - **`-t`**  
   Specifies the name of the column in the dataset that contains the test results (`tests`) already applied to the instances.  
 
+- **`-l`**
+  This parameter is used to translate the prompt from one language to another.
+
 Below are examples of running the extractors with the help of the execution parameters:
 
 ```bash
