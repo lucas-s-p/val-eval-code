@@ -73,4 +73,5 @@ python3 evaluate_benchmark.py \
   --lang_prompt "en"
 ```
 
-<iframe src="https://drive.google.com/file/d/1T4VKM0LQ7HSKogA6xDKi5sJg5DlFCQ3v/preview" width="640" height="480" allow="autoplay"></iframe>
+- Link to DEMO: [val-eval-code](https://drive.google.com/file/d/1T4VKM0LQ7HSKogA6xDKi5sJg5DlFCQ3v/preview)
+
