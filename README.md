@@ -45,18 +45,29 @@ python3 evaluate_benchmark.py \
     --dataset "hf://datasets/openai/openai_humaneval/openai_humaneval/test-00000-of-00001.parquet" \
     --prompt_col "prompt" \
     --reference_col "canonical_solution" \
-    --test_suite_col "test"
+    --test_suite_col "test" \
+    --lang_prompt "en"
 
 python3 evaluate_benchmark.py \
     -m maritaca:sabia-2-small \
     --dataset "hf://datasets/openai/openai_humaneval/openai_humaneval/test-00000-of-00001.parquet" \
     --prompt_col "prompt" \
     --reference_col "canonical_solution" \
-    --test_suite_col "test"
+    --test_suite_col "test" \
+    --lang_prompt "en"
 
 python3 evaluate_benchmark.py \
     -m groq:llama-3.3-70b-versatile \
     --dataset "hf://datasets/openai/openai_humaneval/openai_humaneval/test-00000-of-00001.parquet" \
     --prompt_col "prompt" \
     --reference_col "canonical_solution" \
-    --test_suite_col "test"
+    --test_suite_col "test" \
+    --lang_prompt "en"
+
+python3 evaluate_benchmark.py \                                     
+    -m groq:llama-3.1-70b-versatile \
+    --dataset "hf://datasets/openai/openai_humaneval/openai_humaneval/test-00000-of-00001.parquet" \
+    --prompt_col "prompt" \
+    --reference_col "canonical_solution" \
+    --test_suite_col "test" \
+    --lang_prompt "en"
