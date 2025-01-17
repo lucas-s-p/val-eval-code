@@ -8,3 +8,4 @@ maritalk
 groq
 googletrans
 tqdm
+translatepy
