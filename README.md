@@ -64,10 +64,13 @@ python3 evaluate_benchmark.py \
     --test_suite_col "test" \
     --lang_prompt "en"
 
-python3 evaluate_benchmark.py \                                     
-    -m groq:llama-3.1-70b-versatile \
-    --dataset "hf://datasets/openai/openai_humaneval/openai_humaneval/test-00000-of-00001.parquet" \
-    --prompt_col "prompt" \
-    --reference_col "canonical_solution" \
-    --test_suite_col "test" \
-    --lang_prompt "en"
+python3 evaluate_benchmark.py \
+  -m groq:llama-3.1-70b-versatile \
+  --dataset "hf://datasets/openai/openai_humaneval/openai_humaneval/test-00000-of-00001.parquet" \
+  --prompt_col "prompt" \
+  --reference_col "canonical_solution" \
+  --test_suite_col "test" \
+  --lang_prompt "en"
+```
+
+<iframe src="https://drive.google.com/file/d/1T4VKM0LQ7HSKogA6xDKi5sJg5DlFCQ3v/preview" width="640" height="480" allow="autoplay"></iframe>
